@@ -88,3 +88,6 @@ ElasticEnv/
 
 # Rope project settings
 .ropeproject
+
+# Host info file
+.#elasticPot.py

@@ -2,9 +2,36 @@
 ** Description
  This is a elasticSearch Honeypot written by Python(3.5). It emulates GET
  PUT, POST, DELETE requests. Using elasticSearch as backend(yes elasticSearch) 
-** Installation
+** Installation&Run
+- import
+#+NAME: import
+#+HEADER: :exports both :results output
+#+BEGIN_SRC sh 
+  pip install -r 'requirements.txt'
+#+END_SRC
+- configuration
  Deploying elasticSearch on an another port(default 9200), deploying this
  honeypot on port 9200. That's all.
+ checking detail by
+#+NAME: detail
+#+HEADER: :exports both :results output
+#+BEGIN_SRC sh 
+  elasticPot.py -h
+#+END_SRC
+- run
+  - simple run
+  #+NAME: simple-run
+  #+HEADER: :exports both :results output
+  #+BEGIN_SRC sh 
+    elasticPot.py
+  #+END_SRC
+  - add debug mode
+  #+NAME: debug-run
+  #+HEADER: :exports both :results output
+  #+BEGIN_SRC sh 
+    elasticPot.py -d
+  #+END_SRC
+
 ** TODOList
 *** Dynamic indices
 make indices looks more dynamic(currently only column index, store.size 
