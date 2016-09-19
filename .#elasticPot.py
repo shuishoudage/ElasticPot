@@ -1,1 +1,0 @@
-PTT@host-143-121.hstl5.put.poznan.pl.29223
