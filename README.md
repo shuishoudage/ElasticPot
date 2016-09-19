@@ -1,2 +1,0 @@
-# ElasticPot
-Elastic search honeypot
