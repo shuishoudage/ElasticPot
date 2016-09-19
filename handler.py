@@ -6,6 +6,7 @@ from collections import OrderedDict
 from urllib.parse import urlparse
 from tabulate import tabulate
 import random
+import os
 
 
 class Handler:
@@ -32,6 +33,32 @@ class Handler:
             else:
                 result = tabulate(data['indices'], tablefmt="plain")
                 return result
+        # when search for an index
+        elif '_search' in request.path:
+            requestedFile = urlparse(request.path).path.split('/')[1]
+            filePath = './FakeData/FakeContents/' + requestedFile + '.json'
+            if os.path.exists(filePath):
+                if '_search?pretty' in request.path:
+                    r = self.printFile(filePath)
+                    return json.dumps(r, indent=2) + '\n'
+                else:
+                    return json.dumps(r) + '\n'
+            else:
+                fakeError = './FakeData/FakeError/fakeError1.json'
+                r = self.printFile(fakeError)
+                indice = urlparse(request.path).path.split('/')[1]
+                r['error']['root_cause'][0]['type'] = "index_not_found_exception"
+                r['error']['root_cause'][0]['reason'] = "no such index"
+                r['error']['root_cause'][0]['resource.id'] = indice
+                r['error']['root_cause'][0]['index'] = indice
+                r['error']['type'] = "index_not_found_exception"
+                r['error']['reason'] = "no such index"
+                r['error']['resource.id'] = indice
+                r['error']['index'] = indice
+                if 'pretty' in request.path:
+                    return json.dumps(r, indent=2) + '\n'
+                else:
+                    return json.dumps(r)
         # when query something not included will print error banner
         else:
             fakeError = './FakeData/FakeError/fakeError1.json'
