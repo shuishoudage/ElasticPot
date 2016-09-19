@@ -5,7 +5,7 @@
 ** Installation
  Deploying elasticSearch on an another port(default 9200), deploying this
  honeypot on port 9200. That's all.
-** TODO Improvement 
+** TODOList
 *** Dynamic indices
 make indices looks more dynamic(currently only column index, store.size 
 pri.store.size are dynamic)
